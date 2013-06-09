@@ -1,0 +1,20 @@
+PROJECT = client
+
+CC = gcc
+INCLUDE = ../../
+HLIB = ../../hlib/hlib.a
+CFLAGS = -Wall -g -pthread -I$(INCLUDE)
+
+OBJECTS = client.o
+
+all : $(PROJECT)
+
+.c.o :
+	$(CC) -c $(CFLAGS) $<
+
+$(PROJECT) : $(OBJECTS)
+	$(CC) $(OBJECTS) -o -pthread $(PROJECT) $(HLIB)
+
+
+clean:
+	rm -f *.o $(PROJECT)
